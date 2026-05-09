@@ -22,6 +22,9 @@ export type ProductListItem = {
   href: string;
   badge?: string;
   availableForSale: boolean;
+  /** Storefront variant GID for cart (first available / default). */
+  defaultVariantId: string | null;
+  defaultVariantAvailable: boolean;
 };
 
 export type ShopifyVariant = {

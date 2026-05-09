@@ -68,7 +68,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const closeCart = useCallback(() => setIsOpen(false), []);
 
   const addItem = useCallback(
-    async (merchandiseId: string, quantity: number) => {
+    async (
+      merchandiseId: string,
+      quantity: number,
+      options?: { openCart?: boolean },
+    ): Promise<ShopifyCart | null> => {
+      const openCartAfter = options?.openCart !== false;
       setIsBusy(true);
       try {
         if (!cartId) {
@@ -78,11 +83,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             setCartId(created.id);
             setCart(created);
           });
-        } else {
-          const updated = await addCartLines(cartId, [{ merchandiseId, quantity }]);
-          startTransition(() => setCart(updated));
+          if (openCartAfter) setIsOpen(true);
+          return created;
         }
-        setIsOpen(true);
+        const updated = await addCartLines(cartId, [{ merchandiseId, quantity }]);
+        startTransition(() => setCart(updated));
+        if (openCartAfter) setIsOpen(true);
+        return updated;
+      } catch {
+        return null;
       } finally {
         setIsBusy(false);
       }

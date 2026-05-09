@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { CollectionExploreMoreSection } from "@/components/collection/collection-explore-more-section";
 import { CollectionHero } from "@/components/collection/collection-hero";
 import { ProductCard } from "@/components/product/product-card";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -56,6 +57,7 @@ export default async function CollectionPage({ params }: Props) {
         <CollectionExploreMoreSection otherCollections={otherCollections} />
         <CollectionNewsletterSection />
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

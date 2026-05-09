@@ -34,6 +34,10 @@ type ProductCardGql = {
   compareAtPriceRange?: {
     minVariantPrice: ShopifyMoney | null;
   } | null;
+  selectedOrFirstAvailableVariant: {
+    id: string;
+    availableForSale: boolean;
+  } | null;
 };
 
 export function toProductListItem(node: ProductCardGql): ProductListItem {
@@ -54,6 +58,8 @@ export function toProductListItem(node: ProductCardGql): ProductListItem {
     href: `/products/${node.handle}`,
     badge: hasCompare ? "Sale" : undefined,
     availableForSale: node.availableForSale,
+    defaultVariantId: node.selectedOrFirstAvailableVariant?.id ?? null,
+    defaultVariantAvailable: node.selectedOrFirstAvailableVariant?.availableForSale ?? false,
   };
 }
 

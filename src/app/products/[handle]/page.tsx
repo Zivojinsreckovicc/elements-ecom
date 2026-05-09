@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -54,6 +55,7 @@ export default async function ProductPage({ params }: Props) {
           <RelatedProducts products={related} currentHandle={product.handle} />
         </Container>
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

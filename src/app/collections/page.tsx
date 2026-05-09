@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CategoryCard } from "@/components/collection/category-card";
+import { CollectionShowcaseSection } from "@/components/collection/collection-showcase-section";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -19,7 +20,7 @@ export default async function CollectionsPage() {
       <AnnouncementBar />
       <Navbar />
       <main>
-        <Section className="pt-14 md:pt-20">
+        <Section className="pb-4 pt-14 md:pb-8 md:pt-20">
           <div className="max-w-2xl space-y-4">
             <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Shop</p>
             <h1 className="text-4xl tracking-tight text-zinc-900 md:text-6xl">Collections</h1>
@@ -32,20 +33,26 @@ export default async function CollectionsPage() {
             <p className="mt-12 text-sm text-zinc-600">
               No collections found. Add collections in Shopify to populate this page.
             </p>
-          ) : (
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {collections.map((c) => (
-                <CategoryCard key={c.id} category={c} />
-              ))}
-            </div>
-          )}
-          <p className="mt-12 text-sm text-zinc-600">
+          ) : null}
+        </Section>
+
+        {collections.map((category, index) => (
+          <CollectionShowcaseSection
+            key={category.id}
+            category={category}
+            textOnLeft={index % 2 === 1}
+          />
+        ))}
+
+        <Section className="border-t border-zinc-200/60 py-10 md:py-12">
+          <p className="text-sm text-zinc-600">
             <Link href="/" className="underline underline-offset-4 hover:text-zinc-900">
               Back to home
             </Link>
           </p>
         </Section>
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

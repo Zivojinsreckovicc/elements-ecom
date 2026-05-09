@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactFormSection } from "@/components/contact/contact-form-section";
 import { ContactHeroSection } from "@/components/contact/contact-hero-section";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -22,6 +23,7 @@ export default function ContactPage() {
         <ContactFormSection />
         <NewsletterSection />
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

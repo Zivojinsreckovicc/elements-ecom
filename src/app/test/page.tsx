@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { Section } from "@/components/ui/section";
 import { shopifyStorefrontRequest } from "@/lib/shopify/client";
 
@@ -178,6 +179,7 @@ export default async function TestPage() {
           </pre>
         </div>
       </Section>
+      <RoutedFaqSection />
     </div>
   );
 }

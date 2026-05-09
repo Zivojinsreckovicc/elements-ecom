@@ -7,6 +7,7 @@ import { StatsSection } from "@/components/about/stats-section";
 import { StorySection } from "@/components/about/story-section";
 import { TrustQualitySection } from "@/components/about/trust-quality-section";
 import { WhyElementsSection } from "@/components/about/why-elements-section";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -32,6 +33,7 @@ export default function AboutPage() {
         <StatsSection />
         <ClosingCtaSection />
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

@@ -9,9 +9,6 @@ export const heroContent: HeroContent = {
     "Science-backed and nature-rooted supplements that restore balance, boost vitality, and support your health journey every single day.",
   primaryCta: { label: "Shop essentials", href: "/collections" },
   secondaryCta: { label: "Explore philosophy", href: "/about" },
-  image:
-    "https://images.unsplash.com/photo-1571781418606-70265b9cce90?auto=format&fit=crop&w=1280&q=80",
-  imageAlt: "Minimal premium wellness products arranged on soft neutral surface",
 };
 
 export const testimonials: Testimonial[] = [

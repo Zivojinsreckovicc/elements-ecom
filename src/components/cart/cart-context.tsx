@@ -11,7 +11,11 @@ export type CartContextValue = {
   itemCount: number;
   openCart: () => void;
   closeCart: () => void;
-  addItem: (merchandiseId: string, quantity: number) => Promise<void>;
+  addItem: (
+    merchandiseId: string,
+    quantity: number,
+    options?: { openCart?: boolean },
+  ) => Promise<ShopifyCart | null>;
   updateLine: (lineId: string, quantity: number) => Promise<void>;
   removeLine: (lineId: string) => Promise<void>;
   checkout: () => void;

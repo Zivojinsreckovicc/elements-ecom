@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product/product-card";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -69,6 +70,7 @@ export default async function SearchPage({ searchParams }: Props) {
           </p>
         </Section>
       </main>
+      <RoutedFaqSection />
       <Footer />
     </div>
   );

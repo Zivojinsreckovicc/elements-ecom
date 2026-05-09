@@ -23,6 +23,10 @@ export const PRODUCT_CARD_FRAGMENT = /* GraphQL */ `
         currencyCode
       }
     }
+    selectedOrFirstAvailableVariant {
+      id
+      availableForSale
+    }
   }
 `;
 

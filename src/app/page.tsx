@@ -1,7 +1,10 @@
+import { ContactFormSection } from "@/components/contact/contact-form-section";
+import { RoutedFaqSection } from "@/components/faq/routed-faq-section";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { BrandPhilosophySection } from "@/components/sections/brand-philosophy-section";
+import { ElementsStatementSplitSection } from "@/components/sections/elements-statement-split-section";
 import { FeaturedCategoriesSection } from "@/components/sections/featured-categories-section";
 import { FeaturedProductsSection } from "@/components/sections/featured-products-section";
 import { HeroSection } from "@/components/sections/hero-section";
@@ -19,12 +22,15 @@ export default function Home() {
         <HeroSection />
         <ImpactCountersSection />
         <FeaturedCategoriesSection />
+        <ElementsStatementSplitSection />
         <FeaturedProductsSection />
         <BrandPhilosophySection />
         <LifestyleSplitSection />
         <TestimonialsSection />
-        <NewsletterSection />
       </main>
+      <RoutedFaqSection />
+      <ContactFormSection />
+      <NewsletterSection />
       <Footer />
     </div>
   );

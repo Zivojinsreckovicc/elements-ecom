@@ -4,8 +4,6 @@ export type HeroContent = {
   description: string;
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
-  image: string;
-  imageAlt: string;
 };
 
 export type Category = {
