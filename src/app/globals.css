@@ -2,25 +2,197 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #141414;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  border-color: color-mix(in srgb, #d4d4d8 70%, transparent);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fade-up 600ms ease-out;
+}
+
+/* Shopify product description — readable long-form without @tailwindcss/typography */
+.product-description {
+  max-width: 52rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #52525b;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-description--clamped {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.product-description > *:first-child {
+  margin-top: 0;
+}
+
+.product-description p {
+  margin-top: 0.875rem;
+}
+
+.product-description p:first-child {
+  margin-top: 0;
+}
+
+.product-description h1,
+.product-description h2,
+.product-description h3,
+.product-description h4,
+.product-description h5,
+.product-description h6 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #18181b;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.product-description h1:first-child,
+.product-description h2:first-child,
+.product-description h3:first-child {
+  margin-top: 0;
+}
+
+.product-description h1 {
+  font-size: 1.25rem;
+}
+
+.product-description h2 {
+  font-size: 1.125rem;
+}
+
+.product-description h3,
+.product-description h4 {
+  font-size: 1rem;
+}
+
+.product-description ul,
+.product-description ol {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.product-description ul {
+  list-style-type: disc;
+}
+
+.product-description ol {
+  list-style-type: decimal;
+}
+
+.product-description li {
+  margin-top: 0.375rem;
+  padding-left: 0.25rem;
+}
+
+.product-description li > p {
+  margin-top: 0.25rem;
+}
+
+.product-description a {
+  color: #18181b;
+  text-decoration: underline;
+  text-decoration-color: #d4d4d8;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease;
+}
+
+.product-description a:hover {
+  text-decoration-color: #18181b;
+}
+
+.product-description strong,
+.product-description b {
+  font-weight: 600;
+  color: #3f3f46;
+}
+
+.product-description em,
+.product-description i {
+  font-style: italic;
+}
+
+.product-description img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.product-description br + br {
+  display: block;
+  content: "";
+  margin-top: 0.5rem;
+}
+
+.product-description blockquote {
+  margin-top: 1.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid #d4d4d8;
+  color: #71717a;
+  font-style: italic;
+}
+
+.product-description hr {
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid #e4e4e7;
+}
+
+.product-description table {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.product-description th,
+.product-description td {
+  border: 1px solid #e4e4e7;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.product-description th {
+  font-weight: 500;
+  color: #18181b;
+  background: #fafafa;
+}
+
+.product-description div:empty {
+  display: none;
 }
