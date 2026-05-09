@@ -9,7 +9,34 @@ import {
 } from "@/components/product/product-rating-trust";
 import { ProductDescription } from "@/components/product/product-description";
 import { formatMoney, plainTextExcerpt } from "@/lib/shopify/transformers";
-import type { ShopifyProductDetail, ShopifyVariant } from "@/types/shopify";
+import type {
+  ShopifyProductDetail,
+  ShopifyProductOption,
+  ShopifyVariant,
+} from "@/types/shopify";
+
+/** Shopify's placeholder when a product has no real variants (single "Default Title" option). */
+function visibleProductOptions(
+  product: ShopifyProductDetail,
+): ShopifyProductOption[] {
+  if (product.variants.length !== 1) {
+    return product.options;
+  }
+  if (product.options.length !== 1) {
+    return product.options;
+  }
+  const opt = product.options[0];
+  const name = opt.name.trim().toLowerCase();
+  const values = opt.values.map((v) => v.trim().toLowerCase());
+  if (name !== "title" || values.length !== 1) {
+    return product.options;
+  }
+  const only = values[0];
+  if (only === "default title" || only === "default") {
+    return [];
+  }
+  return product.options;
+}
 
 type ProductPageMainProps = {
   product: ShopifyProductDetail;
@@ -53,6 +80,8 @@ export function ProductPageMain({ product }: ProductPageMainProps) {
     () => findVariant(product.variants, selectedOptions),
     [product.variants, selectedOptions],
   );
+
+  const optionsForUi = useMemo(() => visibleProductOptions(product), [product]);
 
   const variantImageUrl = selectedVariant?.image?.url ?? null;
   const activeFromVariant = variantImageUrl ?? product.featuredImage?.url ?? images[0]?.url ?? null;
@@ -138,7 +167,7 @@ export function ProductPageMain({ product }: ProductPageMainProps) {
           </div>
         </div>
 
-        {product.options.map((option) => (
+        {optionsForUi.map((option) => (
           <div key={option.name}>
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">{option.name}</p>
             <div className="mt-3 flex flex-wrap gap-2">
