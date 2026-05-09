@@ -199,7 +199,7 @@ export function ProductPageMain({ product }: ProductPageMainProps) {
           </div>
         ))}
 
-        <div className="flex flex-wrap items-end gap-4">
+        <div className="flex flex-wrap items-end gap-3">
           <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.16em] text-zinc-500">
             Quantity
             <input
@@ -213,22 +213,45 @@ export function ProductPageMain({ product }: ProductPageMainProps) {
               className="h-11 w-20 rounded-xl border border-zinc-300 px-3 text-sm text-zinc-900"
             />
           </label>
-          <button
-            type="button"
-            disabled={
-              isBusy ||
-              !selectedVariant ||
-              !selectedVariant.availableForSale ||
-              quantity < 1
-            }
-            onClick={() => {
-              if (!selectedVariant) return;
-              void addItem(selectedVariant.id, quantity);
-            }}
-            className="h-11 rounded-full bg-zinc-900 px-8 text-sm text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Add to cart
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={
+                isBusy ||
+                !selectedVariant ||
+                !selectedVariant.availableForSale ||
+                quantity < 1
+              }
+              onClick={() => {
+                if (!selectedVariant) return;
+                void addItem(selectedVariant.id, quantity);
+              }}
+              className="h-11 rounded-full bg-zinc-900 px-8 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Add to cart
+            </button>
+            <button
+              type="button"
+              disabled={
+                isBusy ||
+                !selectedVariant ||
+                !selectedVariant.availableForSale ||
+                quantity < 1
+              }
+              onClick={() => {
+                if (!selectedVariant) return;
+                void (async () => {
+                  const cart = await addItem(selectedVariant.id, quantity, { openCart: false });
+                  if (cart?.checkoutUrl) {
+                    window.location.href = cart.checkoutUrl;
+                  }
+                })();
+              }}
+              className="h-11 rounded-full border border-zinc-300 bg-white px-8 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-900 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Buy now
+            </button>
+          </div>
         </div>
 
         <ProductCheckoutReassurance />
