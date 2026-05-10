@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteLogo } from "@/components/layout/site-logo";
 import { Container } from "@/components/ui/container";
 import { footerColumns } from "@/data/homepage";
 
@@ -8,7 +9,7 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div className="max-w-sm space-y-3">
-            <p className="text-lg tracking-[0.16em] text-zinc-900">ELEMENTS</p>
+            <SiteLogo variant="footer" />
             <p className="text-sm leading-7 text-zinc-600">
               Premium wellness essentials for modern routines, intentional living, and long-term vitality.
             </p>

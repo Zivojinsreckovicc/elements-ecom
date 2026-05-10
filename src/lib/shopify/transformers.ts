@@ -52,7 +52,7 @@ export function toProductListItem(node: ProductCardGql): ProductListItem {
     handle: node.handle,
     subtitle: plainTextExcerpt(node.description || "", 110),
     priceFormatted: formatMoney(min),
-    compareAtFormatted: compareMin ? formatMoney(compareMin) : null,
+    compareAtFormatted: hasCompare && compareMin ? formatMoney(compareMin) : null,
     imageUrl: node.featuredImage?.url ?? null,
     imageAlt: node.featuredImage?.altText || node.title,
     href: `/products/${node.handle}`,

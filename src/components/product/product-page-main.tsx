@@ -159,7 +159,9 @@ export function ProductPageMain({ product }: ProductPageMainProps) {
                 ? formatMoney(selectedVariant.price)
                 : formatMoney(product.priceRange.min)}
             </p>
-            {selectedVariant?.compareAtPrice ? (
+            {selectedVariant?.compareAtPrice &&
+            Number(selectedVariant.compareAtPrice.amount) >
+              Number(selectedVariant.price.amount) ? (
               <p className="text-lg text-zinc-400 line-through">
                 {formatMoney(selectedVariant.compareAtPrice)}
               </p>
