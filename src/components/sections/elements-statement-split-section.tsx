@@ -9,8 +9,7 @@ const LINES = ["EL", "EM", "ENTS"] as const;
 /** SVG ring circumference for r=54 (viewBox 120×120). */
 const RING_CIRC = 2 * Math.PI * 54;
 
-const WELLNESS_IMAGE =
-  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=85";
+const STATEMENT_IMAGE = "/el-em-ents.png";
 
 const TRUST_STATEMENT =
   "Each piece in our collection is held to a standard of formulation, transparency, and care we would expect in our own routines—so you choose with clarity, not guesswork.";
@@ -110,11 +109,11 @@ export function ElementsStatementSplitSection() {
 
         <div className="relative z-0 min-h-[min(42dvh,400px)] w-full md:min-h-0">
           <Image
-            src={WELLNESS_IMAGE}
-            alt="Calm wellness moment — restorative care and relaxation"
+            src={STATEMENT_IMAGE}
+            alt="Curated supplement bottles from the Elements collection on stone"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-[center_30%]"
+            className="object-cover object-center"
             priority={false}
           />
         </div>
