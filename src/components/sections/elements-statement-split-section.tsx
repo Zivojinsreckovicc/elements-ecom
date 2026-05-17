@@ -3,8 +3,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+const EARTH_ICON = "/earth.png";
+const FIRE_ICON = "/fire.png";
 
-const LINES = ["EL", "EM", "ENTS"] as const;
+const ICON_ALIGN =
+  "block h-auto max-h-[0.92em] w-auto shrink-0 object-contain object-left-bottom";
+
+const LINES = [
+  {
+    text: "EL",
+    imageSrc: EARTH_ICON,
+    iconClass: `${ICON_ALIGN} max-w-[0.58em]`,
+  },
+  { text: "EM" },
+  {
+    text: "ENTS",
+    imageSrc: FIRE_ICON,
+    iconClass: `${ICON_ALIGN} max-w-[0.9em]`,
+    imageWidth: 1536,
+    imageHeight: 1024,
+  },
+] as const;
 
 /** SVG ring circumference for r=54 (viewBox 120×120). */
 const RING_CIRC = 2 * Math.PI * 54;
@@ -66,7 +85,7 @@ export function ElementsStatementSplitSection() {
             <div className="min-w-0 md:[container-type:inline-size]">
               {/* Mobile: single word */}
               <p
-                className={`select-none font-black uppercase tracking-[-0.04em] text-black leading-none md:hidden motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+                className={`select-none font-black uppercase tracking-[-0.04em] text-[#1A3352] leading-none md:hidden motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
                   inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
                 } text-[clamp(2.5rem,12.5vw,3.75rem)] transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}
               >
@@ -74,24 +93,39 @@ export function ElementsStatementSplitSection() {
               </p>
               {/* md+: stacked lines */}
               <div
-                className="hidden select-none w-full overflow-hidden leading-[0.78] md:block"
+                className="hidden select-none w-full leading-[0.78] md:block"
                 style={{
                   fontSize: "clamp(2.75rem, min(38cqw, 19vw), 11rem)",
                 }}
               >
-                {LINES.map((line, index) => (
-                  <span
-                    key={line}
-                    className={`block font-black uppercase tracking-[-0.05em] text-black transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
-                      inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-                    }`}
-                    style={{
-                      transitionDelay: inView ? `${index * 110}ms` : "0ms",
-                    }}
-                  >
-                    {line}
-                  </span>
-                ))}
+                {LINES.map((line, index) => {
+                  const { text } = line;
+                  return (
+                    <span
+                      key={text}
+                      className={`block font-black uppercase tracking-[-0.05em] text-[#1A3352] transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+                        inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: inView ? `${index * 110}ms` : "0ms",
+                      }}
+                    >
+                      <span className="inline-flex h-[1em] items-end gap-[0.03em] leading-none">
+                        <span className="leading-none">{text}</span>
+                        {"imageSrc" in line ? (
+                          <Image
+                            src={line.imageSrc}
+                            alt=""
+                            width={"imageWidth" in line ? line.imageWidth : 1024}
+                            height={"imageHeight" in line ? line.imageHeight : 1024}
+                            className={line.iconClass}
+                            sizes="(max-width: 768px) 48px, 96px"
+                          />
+                        ) : null}
+                      </span>
+                    </span>
+                  );
+                })}
               </div>
             </div>
             <p

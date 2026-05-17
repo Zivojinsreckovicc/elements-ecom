@@ -64,6 +64,21 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
   }, [cartId, hydrated]);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "development") return;
+    const url = cart?.checkoutUrl;
+    if (!url || typeof window === "undefined") return;
+    try {
+      if (new URL(url).hostname === window.location.hostname) {
+        console.warn(
+          "[cart] checkoutUrl points at this headless host, so /cart will 404. Add a Shopify Online Store subdomain (DNS → Shopify), set it as primary for the online store, then set NEXT_PUBLIC_SHOPIFY_ONLINE_STORE_HOST in .env.local.",
+        );
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [cart?.checkoutUrl]);
+
   const openCart = useCallback(() => setIsOpen(true), []);
   const closeCart = useCallback(() => setIsOpen(false), []);
 

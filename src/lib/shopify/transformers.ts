@@ -1,3 +1,4 @@
+import { resolveCartCheckoutUrl } from "@/lib/shopify/checkout-url";
 import type {
   CollectionListItem,
   ProductListItem,
@@ -204,7 +205,7 @@ export function toShopifyCart(cart: CartGql): ShopifyCart {
 
   return {
     id: cart.id,
-    checkoutUrl: cart.checkoutUrl,
+    checkoutUrl: resolveCartCheckoutUrl(cart.checkoutUrl),
     totalQuantity: cart.totalQuantity,
     lines,
     cost: {

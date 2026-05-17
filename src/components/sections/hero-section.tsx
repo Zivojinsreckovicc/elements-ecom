@@ -1,3 +1,4 @@
+import { SiteLogo } from "@/components/layout/site-logo";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { heroContent } from "@/data/homepage";
@@ -21,8 +22,15 @@ export function HeroSection() {
       <Container className="relative z-10 !px-4 sm:!px-5 md:!px-8 lg:!px-10">
         <div className="max-w-3xl space-y-8 text-left">
           <p className="text-xs uppercase tracking-[0.24em] text-black/55">{heroContent.eyebrow}</p>
-          <h1 className="text-5xl font-medium leading-[1.02] tracking-tight text-black md:text-6xl lg:text-7xl">
-            {heroContent.title}
+          <h1 className="flex flex-col items-start gap-3 sm:gap-4">
+            <SiteLogo
+              variant="hero"
+              priority
+              className="-ml-4 sm:-ml-5 md:-ml-6 lg:-ml-7"
+            />
+            <span className="text-2xl font-medium leading-[1.1] tracking-tight text-black/90 sm:text-3xl md:text-4xl lg:text-5xl">
+              {heroContent.tagline}
+            </span>
           </h1>
           <p className="max-w-lg text-[0.8125rem] leading-[1.65] text-black/72 sm:text-sm sm:leading-relaxed">
             {heroContent.description}

@@ -4,7 +4,7 @@ export const announcementText = "Free shipping on orders over $75";
 
 export const heroContent: HeroContent = {
   eyebrow: "Elements Wellness",
-  title: "Elements - Your Wellness Boutique",
+  tagline: "Your Wellness Boutique",
   description:
     "Science-backed and nature-rooted supplements that restore balance, boost vitality, and support your health journey every single day.",
   primaryCta: { label: "Shop essentials", href: "/collections" },
