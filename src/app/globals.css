@@ -77,6 +77,95 @@ section {
   animation: fade-up 600ms ease-out;
 }
 
+/* Hero ambient gradient orbs - gentle, lightweight drift (GPU-friendly transform/opacity only) */
+@keyframes hero-orb-left {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate3d(34px, -30px, 0) scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@keyframes hero-orb-right {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate3d(-32px, 26px, 0) scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.hero-orb {
+  will-change: transform, opacity;
+}
+
+.hero-orb-left {
+  animation: hero-orb-left 16s ease-in-out infinite;
+}
+
+.hero-orb-right {
+  animation: hero-orb-right 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-left,
+  .hero-orb-right {
+    animation: none;
+  }
+}
+
+/* SMS signup popup */
+@keyframes sms-popup-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sms-popup-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sms-popup-backdrop-enter {
+  animation: sms-popup-backdrop-in 0.3s ease-out forwards;
+}
+
+.sms-popup-panel-enter {
+  animation: sms-popup-panel-in 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sms-popup-backdrop-enter,
+  .sms-popup-panel-enter {
+    animation: none;
+  }
+
+  .sms-popup-backdrop-enter {
+    opacity: 1;
+  }
+
+  .sms-popup-panel-enter {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Shopify product description — readable long-form without @tailwindcss/typography */
 .product-description {
   max-width: 52rem;

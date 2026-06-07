@@ -3,12 +3,12 @@ import { FooterColumn, HeroContent, Testimonial } from "@/types/homepage";
 export const announcementText = "Free shipping on orders over $75";
 
 export const heroContent: HeroContent = {
-  eyebrow: "Elements Wellness",
-  tagline: "Your Wellness Boutique",
+  eyebrow: "Your Wellness Boutique",
+  tagline: "Everything Your Body And Your Home Need To Thrive",
   description:
-    "Science-backed and nature-rooted supplements that restore balance, boost vitality, and support your health journey every single day.",
-  primaryCta: { label: "Shop essentials", href: "/collections" },
-  secondaryCta: { label: "Explore philosophy", href: "/about" },
+    "Science-backed supplements and considered home technology — water, air, frequency and recovery — curated into one calm, intentional place to shop.",
+  primaryCta: { label: "Shop supplements", href: "/collections" },
+  secondaryCta: { label: "Explore home tech", href: "/collections" },
 };
 
 export const testimonials: Testimonial[] = [

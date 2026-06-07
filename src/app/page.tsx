@@ -12,6 +12,7 @@ import { ImpactCountersSection } from "@/components/sections/impact-counters-sec
 import { LifestyleSplitSection } from "@/components/sections/lifestyle-split-section";
 import { NewsletterSection } from "@/components/sections/newsletter-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
+import { SmsSignupPopup } from "@/components/marketing/sms-signup-popup";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <ContactFormSection />
       <NewsletterSection />
       <Footer />
+      <SmsSignupPopup />
     </div>
   );
 }
